@@ -36,7 +36,7 @@ class TodoForm extends Component {
               type="submit"
               disabled={form.disabled}
               onClick={() => onAddTodo(form)}>
-              登録
+              Add
             </button>
           </div>
         </form>

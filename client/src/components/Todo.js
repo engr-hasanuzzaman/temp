@@ -25,7 +25,7 @@ export default class Todo extends Component {
           <button
             className="btn btn-danger"
             onClick={() => onDelete(todo.id)}
-          >削除</button>
+          >Delete</button>
         </td>
       </tr>
     )
