@@ -3,8 +3,8 @@ default: &default
   encoding: utf8
   reconnect: false
   pool: 5
-  username: root
-  password: 'root'
+  username:
+  password:
   host: localhost
 
 development:

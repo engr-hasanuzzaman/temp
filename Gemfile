@@ -20,16 +20,16 @@ gem 'devise'
 
 gem 'rails'
 
-gem 'mysql2', '~> 0.4.8'
+gem 'mysql2'
 
-gem 'puma', '~> 3.0'
+gem 'puma'
 
 gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails','~> 3.1.0'
-  gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :development do
