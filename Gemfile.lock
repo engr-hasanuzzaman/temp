@@ -178,6 +178,8 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
     slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -215,7 +217,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
-  launchy (~> 2.4.2)
+  launchy
   listen (~> 3.0.5)
   mysql2
   pry-nav
@@ -226,7 +228,8 @@ DEPENDENCIES
   rails
   rspec-rails
   rubocop
-  selenium-webdriver (~> 2.53)
+  selenium-webdriver
+  shoulda-matchers
   spring
   spring-watcher-listen (~> 2.0.0)
 
@@ -234,4 +237,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.1
+   1.15.3

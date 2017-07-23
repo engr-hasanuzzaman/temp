@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170723171614) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "type", default: 0
+    t.integer "role", default: 0
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
