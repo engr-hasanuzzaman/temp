@@ -23,9 +23,9 @@ class TodoList extends Component {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th width="10%">完了</th>
-              <th width="20%">優先順位</th>
-              <th>やること</th>
+              <th width="10%">Done</th>
+              <th width="20%">Priority</th>
+              <th>things to do</th>
               <th width="20%"></th>
             </tr>
           </thead>
