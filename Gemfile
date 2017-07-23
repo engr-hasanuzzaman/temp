@@ -47,11 +47,12 @@ group :development do
 end
 
 group :test do
-  gem 'faker', '~> 1.4.3'
-  gem 'capybara', '~> 2.4.3'
-  gem 'database_cleaner', '~> 1.3.0'
-  gem 'launchy', '~> 2.4.2'
-  gem 'selenium-webdriver', '~> 2.53'
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers', git: 'git://github.com/thoughtbot/shoulda-matchers.git',  branch: 'rails-5'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
