@@ -52,6 +52,11 @@ module Rails5ReactReduxTodo
 
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
+
+    # response json for devise controller
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
+    end
   end
 end
 

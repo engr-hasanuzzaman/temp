@@ -4,9 +4,34 @@ import TodoForm from './containers/TodoForm'
 import TodoList from './containers/TodoList'
 import * as actionCreators from './actions/api'
 
+var Router       = require('react-router');
+var RouteHandler = Router.RouteHandler;
+var $            = require('jquery');
+
+import SignUpForm from './components/auth/SignUpForm'
+
+
 export default class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      signedIn: null
+    }
+    this.singIn = this.singIn.bind(this);
+  }
   componentDidMount() {
     this.handleFetchTodos()
+    // this.singIn();
+  }
+
+  singIn(){
+    $.ajax({
+        method: "GET",
+        url: "/auth/is_signed_in.json"
+      })
+      .done(function(data){
+        this.setState({ signedIn: data.signed_in });
+      }.bind(this));
   }
 
   handleFetchTodos() {
@@ -28,14 +53,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Todos</h1>
-        <TodoForm
-          onAddTodo={this.handleAddTodo.bind(this)}
-        />
-        <TodoList
-          onUpdateTodo={this.handleUpdateTodo.bind(this)}
-          onDeleteTodo={this.handleDeleteTodo.bind(this)}
-        />
+        <SignUpForm />
       </div>
     )
   }
