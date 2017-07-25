@@ -30,9 +30,6 @@ module Rails5ReactReduxTodo
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use Rack::MethodOverride
     config.eager_load = true
-    config.to_prepare do
-      Devise::Mailer.layout 'mailer'
-    end
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
