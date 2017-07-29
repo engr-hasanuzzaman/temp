@@ -25,7 +25,7 @@ const fetUserProfile = (jwt) => {
     })
     .catch(error => {
       console.log(error.message);
-      
+
       return {
         jwt: '',
         type: '',
@@ -42,11 +42,12 @@ export default {
       .then(res => {
         console.log('User sign up success');
         console.log(res);
-        return res.data;
+        return {error: 'sing up success'};
       })
       .catch(error => {
-        console.log('User sign up fail and error is');
-        console.log(error.message);
+        console.log('--sign up fail ');
+        console.log(error);
+        return (new Error('this is test error'));
       })
   },
 
@@ -62,10 +63,7 @@ export default {
       .catch(error => {
         console.log('User sign in fail and error is');
         console.log(error.message);
-        return {
-          jwt: '',
-          type: ''
-        }
+        return (new Error('this is test error'));
       })
   },
 
@@ -86,53 +84,5 @@ export default {
           type: ''
         }
       })
-  },
-
-  fetchusers: () => {
-    return axios.get(url)
-  },
-
-  addTodo: (todo) => {
-    return new Promise((resolve, reject) => {
-      request
-        .post(url)
-        .send({ todo: todo })
-        .end((err, res) => {
-          if (!res || res.status === 404) {
-            reject()
-          } else {
-            resolve(res.body)
-          }
-        })
-    })
-  },
-
-  updateTodo: (todo) => {
-    return new Promise((resolve, reject) => {
-      request
-        .patch(url + '/' + todo.id)
-        .send({ todo: todo })
-        .end((err, res) => {
-          if (!res || res.status === 404) {
-            reject()
-          } else {
-            resolve(res.body)
-          }
-        })
-    })
-  },
-
-  deleteTodo: (id) => {
-    return new Promise((resolve, reject) => {
-      request
-        .del(url + '/' + id)
-        .end((err, res) => {
-          if (!res || res.status === 404) {
-            reject()
-          } else {
-            resolve(id)
-          }
-        })
-    })
   }
 }

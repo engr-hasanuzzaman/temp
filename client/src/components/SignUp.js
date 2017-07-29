@@ -33,21 +33,24 @@ class SignUpForm extends React.Component {
 
   render () {
     return (
-      // <form onChange={this.onFieldChanged} onSubmit={this.onSubmit}>
-      //   <input type="text" name="name" value={this.state.name}/>
-      //   <input type="email" name="email" value={this.state.email}/>
-      //   <input type="password" name="password" value={this.state.password} />
-      //   <button type="submit">Subscribe</button>
-      //   {this.props.error ? <p>{ this.props.error }</p>: null}
-      // </form>
       <div>
         <Form horizontal onSubmit={this.onSubmit} onChange={this.onFieldChanged}>
+
+        <FormGroup controlId="formHorizontalName">
+          <Col componentClass={ControlLabel} sm={2}>
+            Name
+          </Col>
+          <Col sm={10}>
+            <FormControl required type="text" placeholder="name" name="name" value={this.state.name}/>
+          </Col>
+        </FormGroup>
+
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>
               Email
             </Col>
             <Col sm={10}>
-              <FormControl type="email" placeholder="Email" name="email" value={this.state.email}/>
+              <FormControl required type="email" placeholder="Email" name="email" value={this.state.email}/>
             </Col>
           </FormGroup>
 
@@ -56,19 +59,13 @@ class SignUpForm extends React.Component {
               Password
             </Col>
             <Col sm={10}>
-              <FormControl type="password" placeholder="Password" name="password" value={this.state.password}/>
+              <FormControl required type="password" placeholder="Password" name="password" value={this.state.password}/>
             </Col>
           </FormGroup>
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Checkbox>Remember me</Checkbox>
-            </Col>
-          </FormGroup>
-
-          <FormGroup>
-            <Col smOffset={2} sm={10}>
-              <Button type="submit">
+              <Button  bsStyle="success" type="submit">
                 Sign Up
               </Button>
             </Col>
@@ -77,6 +74,10 @@ class SignUpForm extends React.Component {
       </div>
     )
   }
+}
+
+SignUpForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default SignUpForm;

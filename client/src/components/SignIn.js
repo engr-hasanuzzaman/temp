@@ -47,7 +47,7 @@ class SignInForm extends React.Component {
               Password
             </Col>
             <Col sm={10}>
-              <FormControl type="password" placeholder="Password" name="password" value={this.state.password}/>
+              <FormControl required type="password" placeholder="Password" name="password" value={this.state.password}/>
             </Col>
           </FormGroup>
 
@@ -59,7 +59,7 @@ class SignInForm extends React.Component {
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Button type="submit">
+              <Button bsStyle="success" type="submit">
                 Sign In
               </Button>
             </Col>
@@ -68,6 +68,10 @@ class SignInForm extends React.Component {
       </div>
     )
   }
+}
+
+SignInForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default SignInForm;

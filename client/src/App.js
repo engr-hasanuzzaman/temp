@@ -38,8 +38,7 @@ export default class App extends Component {
   }
 
   handleUserSignUp(user) {
-    console.log('-----sing up success');
-    // show success message
+    this.props.userSignUp(user);
   }
 
   handleUserSignIn(user) {
@@ -69,7 +68,7 @@ export default class App extends Component {
         show={this.props.errors.length > 0}
         title="Application Notice board"
         text={this.props.errors[0]}
-        onConfirm={() => this.setState({ show: false })}
+        onConfirm={() => this.props.resetError()}
         onOutsideClick={() => this.setState({ show: false })}
       />
       </div>

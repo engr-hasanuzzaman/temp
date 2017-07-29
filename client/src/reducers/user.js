@@ -5,7 +5,8 @@ import * as ApiAction from '../constants/api'
 const initialState = {
   name: '',
   email: '',
-  jwt: ''
+  jwt: '',
+  error: false
 }
 
 const user = handleActions({
@@ -18,7 +19,7 @@ const user = handleActions({
   //   throw: (state, action) => initialState
   // }),
   ['USER_SIGNIN']: {
-    next: (state, action) => Object.assign({}, state, action.payload),
+    next: (state, action) => Object.assign({}, state, action.payload.user),
     throw: (state, action) => console.log('your sing in throw' + action)//Object.assign({}, state, initialState)
   }
 
