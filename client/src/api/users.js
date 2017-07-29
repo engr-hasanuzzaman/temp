@@ -17,17 +17,15 @@ const apiAxios = axios.create({
 });
 
 const fetUserProfile = (jwt) => {
-  console.log('------- fetUserProfile api called with parameter:');
-  console.log(jwt);
   return apiAxios.get(profileUrl, { headers: formatToken(jwt)})
     .then(res => {
-      console.log('fetUserProfile sign in success');
-      console.log(res);
-      return res.data;
+      let user = res.data;
+      user['jwt'] = jwt;
+      return user;
     })
     .catch(error => {
-      console.log('fetUserProfile sign in fail and error is');
       console.log(error.message);
+      
       return {
         jwt: '',
         type: '',

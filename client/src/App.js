@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import SweetAlert from 'sweetalert-react';
 import TodoForm from './containers/TodoForm'
 import TodoList from './containers/TodoList'
 import SignUpForm from './components/SignUp'
@@ -9,7 +10,9 @@ import * as actionCreators from './actions/api'
 export default class App extends Component {
   constructor(props){
     super(props);
-
+    this.state ={
+      show: true
+    }
     this.handleUserSignUp = this.handleUserSignUp.bind(this);
     this.handleUserSignIn = this.handleUserSignIn.bind(this);
   }
@@ -61,6 +64,13 @@ export default class App extends Component {
 
         <SignInForm onSubmit={this.handleUserSignIn} error='this is error message'/>
 
+        <SweetAlert
+        show={this.state.show}
+        title="Demo OutsideClick"
+        text="SweetAlert in React"
+        onConfirm={() => this.setState({ show: false })}
+        onOutsideClick={() => this.setState({ show: false })}
+      />
       </div>
     )
   }

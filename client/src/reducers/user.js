@@ -3,11 +3,9 @@ import * as UiAction from '../constants/ui'
 import * as ApiAction from '../constants/api'
 
 const initialState = {
-  apiToken: '',
-  type: '',
-  signIn: false,
   name: '',
-  email: ''
+  email: '',
+  jwt: ''
 }
 
 const user = handleActions({
@@ -21,7 +19,7 @@ const user = handleActions({
   // }),
   ['USER_SIGNIN']: {
     next: (state, action) => Object.assign({}, state, action.payload),
-    throw: (state, action) => initialState
+    throw: (state, action) => Object.assign({}, state, initialState)
   }
 }, initialState)
 

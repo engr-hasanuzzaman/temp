@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react'
+import SweetAlert from 'sweetalert-react';
 
 class SignInForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      show: true
     }
 
     this.onFieldChanged = this.onFieldChanged.bind(this);
@@ -29,12 +31,22 @@ class SignInForm extends React.Component {
 
   render () {
     return (
-      <form onChange={this.onFieldChanged} onSubmit={this.onSubmit}>
-        <input type="email" name="email" value={this.state.email}/>
-        <input type="password" name="password" value={this.state.password} />
-        <button type="submit">Subscribe</button>
-        {this.props.error ? <p>{ this.props.error }</p>: null}
-      </form>
+      <div>
+          <form onChange={this.onFieldChanged} onSubmit={this.onSubmit}>
+            <input type="email" name="email" value={this.state.email}/>
+            <input type="password" name="password" value={this.state.password} />
+            <button type="submit">Subscribe</button>
+            {this.props.error ? <p>{ this.props.error }</p>: null}
+          </form>
+
+          <SweetAlert
+          show={this.state.show}
+          title="Demo OutsideClick"
+          text="SweetAlert in React"
+          onConfirm={() => this.setState({ show: false })}
+          onOutsideClick={() => this.setState({ show: false })}
+        />
+      </div>
     )
   }
 }

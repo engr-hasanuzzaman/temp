@@ -14,7 +14,8 @@
     "redux": "^3.5.2",
     "redux-actions": "^0.10.1",
     "redux-promise": "^0.5.3",
-    "superagent": "^2.1.0"
+    "superagent": "^2.1.0",
+    "sweetalert-react": "^0.4.10"
   },
   "scripts": {
     "start": "react-scripts start",
