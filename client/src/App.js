@@ -2,9 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TodoForm from './containers/TodoForm'
 import TodoList from './containers/TodoList'
+import SignUpForm from './components/SignUp'
+import SignInForm from './components/SignIn'
 import * as actionCreators from './actions/api'
 
 export default class App extends Component {
+  constructor(props){
+    super(props);
+
+    this.handleUserSignUp = this.handleUserSignUp.bind(this);
+    this.handleUserSignIn = this.handleUserSignIn.bind(this);
+  }
   componentDidMount() {
     this.handleFetchTodos()
   }
@@ -25,6 +33,15 @@ export default class App extends Component {
     this.props.deleteTodo(id)
   }
 
+  handleUserSignUp(user) {
+    console.log('-----sing up success');
+    // show success message
+  }
+
+  handleUserSignIn(user) {
+    this.props.userSignIn(user);
+  }
+
   render() {
     return (
       <div className="App">
@@ -36,6 +53,14 @@ export default class App extends Component {
           onUpdateTodo={this.handleUpdateTodo.bind(this)}
           onDeleteTodo={this.handleDeleteTodo.bind(this)}
         />
+
+        <SignUpForm onSubmit={(user) =>{
+          console.log('--------- submit signup form now');
+          this.handleUserSignUp(user);
+        }} error='this is error message'/>
+
+        <SignInForm onSubmit={this.handleUserSignIn} error='this is error message'/>
+
       </div>
     )
   }
