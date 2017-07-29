@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import SweetAlert from 'sweetalert-react';
 
 class SignInForm extends React.Component {
   constructor(props){
@@ -38,14 +37,6 @@ class SignInForm extends React.Component {
             <button type="submit">Subscribe</button>
             {this.props.error ? <p>{ this.props.error }</p>: null}
           </form>
-
-          <SweetAlert
-          show={this.state.show}
-          title="Demo OutsideClick"
-          text="SweetAlert in React"
-          onConfirm={() => this.setState({ show: false })}
-          onOutsideClick={() => this.setState({ show: false })}
-        />
       </div>
     )
   }

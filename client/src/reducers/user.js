@@ -19,8 +19,9 @@ const user = handleActions({
   // }),
   ['USER_SIGNIN']: {
     next: (state, action) => Object.assign({}, state, action.payload),
-    throw: (state, action) => Object.assign({}, state, initialState)
+    throw: (state, action) => console.log('your sing in throw' + action)//Object.assign({}, state, initialState)
   }
+
 }, initialState)
 
 export default user;
