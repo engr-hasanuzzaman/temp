@@ -16,7 +16,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 
-gem 'devise'
+gem 'knock'
 
 gem 'rails'
 
@@ -39,7 +39,7 @@ group :development do
   # application running in the background.
   # Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
   gem 'pry-nav'
   gem 'pry-rails'
   gem 'pry-remote'
@@ -47,11 +47,11 @@ group :development do
 end
 
 group :test do
-  gem 'faker', '~> 1.4.3'
-  gem 'capybara', '~> 2.4.3'
-  gem 'database_cleaner', '~> 1.3.0'
-  gem 'launchy', '~> 2.4.2'
-  gem 'selenium-webdriver', '~> 2.53'
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
