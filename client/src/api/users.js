@@ -11,7 +11,7 @@ const formatToken = (jwt) => {
 }
 
 const apiAxios = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: baseUrl,
   // timeout: 1000,
   headers: {'X-Requested-With': 'XMLHttpRequest'}
 });
@@ -36,18 +36,13 @@ const fetUserProfile = (jwt) => {
 
 export default {
   signUp: (user) => {
-    console.log('------- signUp api called with parameter:');
-    console.log(user);
     return apiAxios.post(url, { user: user })
       .then(res => {
-        console.log('User sign up success');
-        console.log(res);
-        return {error: 'sing up success'};
+        // console.log('--- with in real async call of signUp success' + res);
+        return res.data;
       })
       .catch(error => {
-        console.log('--sign up fail ');
-        console.log(error);
-        return (new Error('this is test error'));
+        throw error;
       })
   },
 
@@ -63,7 +58,7 @@ export default {
       .catch(error => {
         console.log('User sign in fail and error is');
         console.log(error.message);
-        return (new Error('this is test error'));
+        return error;
       })
   },
 
