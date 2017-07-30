@@ -21,7 +21,7 @@ const form = handleActions({
     disabled: action.payload.trim() === ''
   }),
 
-  [ApiAction.ADD_TODO]: (state, action) => initialState
+  [ApiAction.ADD_REQUEST]: (state, action) => initialState
 }, initialState)
 
 export default form

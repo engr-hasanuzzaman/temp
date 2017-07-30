@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import * as actionCreators from '../actions/api'
 import Request from '../components/Request'
@@ -39,12 +40,12 @@ class RequestList extends Component {
 }
 
 RequestList.propTypes = {
-  onUpdateRequest: PropTypes.func.isRequired,
-  onDeleteRequest: PropTypes.func.isRequired
+  updateRequest: PropTypes.func.isRequired,
+  deleteRequest: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
-  return { requests: state.todos }
+  return { requests: state.requests }
 }
 
 RequestList = connect(

@@ -18,19 +18,13 @@ ruby '2.4.1'
 
 gem 'knock'
 
-gem 'rails'
-
 gem 'mysql2'
 
 gem 'puma'
 
 gem 'rack-cors'
 
-group :development, :test do
-  gem 'byebug', platform: :mri
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-end
+gem 'rails'
 
 group :development do
   gem 'listen', '~> 3.0.5'
@@ -47,11 +41,18 @@ group :development do
 end
 
 group :test do
-  gem 'faker'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
+end
+
+group :development, :test do
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

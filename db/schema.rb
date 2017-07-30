@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170729180611) do
+ActiveRecord::Schema.define(version: 20170730202509) do
+
+  create_table "requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title", null: false
+    t.string "description", default: ""
+    t.integer "status", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.integer "agent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
 
   create_table "todos", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -31,4 +42,5 @@ ActiveRecord::Schema.define(version: 20170729180611) do
     t.index ["token"], name: "index_users_on_token"
   end
 
+  add_foreign_key "requests", "users"
 end

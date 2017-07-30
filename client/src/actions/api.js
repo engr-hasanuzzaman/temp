@@ -1,14 +1,14 @@
 import { createAction } from 'redux-actions'
 import * as types from '../constants/api'
-import api from '../api/todos'
+import api from '../api/requests'
 import userApi from '../api/users'
 import * as ErrorTypes from '../constants/error'
 
 // actions for manageing request
-export const fetchRequests = createAction(types.FETCH_TODOS, api.fetchTodos)
-export const addRequest = createAction(types.ADD_TODO, api.addTodo)
-export const deleteRequest = createAction(types.DELETE_TODO, api.deleteTodo)
-export const updateRequest = createAction(types.UPDATE_TODO, api.updateTodo)
+export const fetchRequests = createAction(types.FETCH_REQUESTS, api.fetchRequests)
+export const addRequest = createAction(types.ADD_REQUEST, api.addRequest)
+export const deleteRequest = createAction(types.DELETE_REQUEST, api.deleteRequest)
+export const updateRequest = createAction(types.UPDATE_REQUEST, api.updateRequest)
 
 // actions for managing users
 export const userSignIn = createAction(types.USER_SIGNIN, userApi.signIn)

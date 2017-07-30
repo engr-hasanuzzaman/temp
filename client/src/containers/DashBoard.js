@@ -23,8 +23,8 @@ class DashBoard extends Component {
           onAddRequest={this.handleAddRequest.bind(this)}
         />
         <RequestList
-          onUpdateRequest={this.props.updateTodo}
-          onDeleteRequest={this.props.deleteTodo}
+          onUpdateRequest={this.props.updateRequest}
+          onDeleteRequest={this.props.deleteRequest}
         />
       </div>
     )
@@ -32,8 +32,8 @@ class DashBoard extends Component {
 }
 
 DashBoard.propTypes = {
-  // onUpdateTodo: PropTypes.func.isRequired,
-  // onDeleteTodo: PropTypes.func.isRequired
+  updateRequest: PropTypes.func.isRequired,
+  deleteRequest: PropTypes.func.isRequired
 }
 
 DashBoard = connect(

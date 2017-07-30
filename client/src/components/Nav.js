@@ -40,7 +40,7 @@ function Navigation(props) {
           {!props.authenticate &&
             <NavItem>
               <NavLink activeClassName='active' to='/sign-up'>
-                Sign Up
+                Sign up
               </NavLink>
             </NavItem>
 
@@ -49,16 +49,17 @@ function Navigation(props) {
           {!props.authenticate &&
             <NavItem>
               <NavLink activeClassName='active' to='/sign-in'>
-                Sign In
+                Sign in
               </NavLink>
             </NavItem>
           }
           {
             props.authenticate &&
-            <NavItem onClick={()=>{
+            <NavItem onClick={(e)=>{
+              e.preventDefault();
               props.singOutPath({jwt: ''});
             }}
-              href="#">Link
+              href="#">Sign ut
             </NavItem>
           }
         </Nav>

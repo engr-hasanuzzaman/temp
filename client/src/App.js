@@ -14,24 +14,11 @@ import * as actionCreators from './actions/api'
 export default class App extends Component {
   constructor(props){
     super(props);
-    this.state ={
+    this.state = {
       show: true
     }
-    // this.handleUserSignUp = this.handleUserSignUp.bind(this);
-    // this.handleUserSignIn = this.handleUserSignIn.bind(this);
+
     this.isAuthorize = this.isAuthorize.bind(this);
-  }
-
-  handleAddTodo(todo) {
-    this.props.addTodo(todo)
-  }
-
-  handleUpdateRequest(Request, completed) {
-    this.props.updateTodo(Request)
-  }
-
-  handleDeleteTodo(id) {
-    this.props.deleteTodo(id)
   }
 
   isAuthorize(){
@@ -63,8 +50,8 @@ export default class App extends Component {
                 {this.isAuthorize() &&
                   <Route exact path='/' render={(props) => (
                     <RequestList
-                      onUpdateRequest={this.props.updateTodo}
-                      onDeleteRequest={this.props.deleteTodo}
+                      onUpdateRequest={this.props.updateRequest}
+                      onDeleteRequest={this.props.deleteRequest}
                     />
                   )}/>
                 }

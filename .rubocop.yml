@@ -55,12 +55,12 @@ Metrics/ModuleLength:
 
 # The fixed indentation style is rational. To align with the first parameters
 # is arguably friendly, but makes for long lines and obscures control flow.
-Style/AlignParameters:
+Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 
 # Both the leading and trailing styles can be argued for. RPL Team has
 # chosen the trailing style.
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: trailing
 
 # I prefer conditionals to mid-method `return` calls, which this cop encourages.
@@ -72,10 +72,10 @@ Style/GuardClause:
 Style/IfUnlessModifier:
   MaxLineLength: 60
 
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
 
 # This cop doesn't work correctly when snake_case variable names end in a number
