@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-export default class Todo extends Component {
+export default class Request extends Component {
   handleToggle(todo, completed) {
     const { onUpdate } = this.props
     todo.completed = completed

@@ -6,8 +6,7 @@ import {BrowserRouter, Route, Path, Switch} from 'react-router-dom';
 import Nav from './components/Nav'
 import { Redirect } from 'react-router'
 
-import TodoForm from './containers/TodoForm'
-import TodoList from './containers/TodoList'
+import RequestList from './containers/DashBoard'
 import SignUpForm from './components/SignUp'
 import SignInForm from './components/SignIn'
 import * as actionCreators from './actions/api'
@@ -22,33 +21,18 @@ export default class App extends Component {
     // this.handleUserSignIn = this.handleUserSignIn.bind(this);
     this.isAuthorize = this.isAuthorize.bind(this);
   }
-  componentDidMount() {
-    this.handleFetchTodos()
-  }
-
-  handleFetchTodos() {
-    this.props.fetchTodos()
-  }
 
   handleAddTodo(todo) {
     this.props.addTodo(todo)
   }
 
-  handleUpdateTodo(todo, completed) {
-    this.props.updateTodo(todo)
+  handleUpdateRequest(Request, completed) {
+    this.props.updateTodo(Request)
   }
 
   handleDeleteTodo(id) {
     this.props.deleteTodo(id)
   }
-  //
-  // handleUserSignUp(user) {
-  //   this.props.userSignUp(user);
-  // }
-  //
-  // handleUserSignIn(user) {
-  //   this.props.userSignIn(user);
-  // }
 
   isAuthorize(){
     return this.props.user.jwt.length > 0
@@ -76,10 +60,20 @@ export default class App extends Component {
                 <Nav authenticate={this.isAuthorize()}  singOutPath={this.props.userSignOut}/>
               </div>
               <Switch>
+                {this.isAuthorize() &&
+                  <Route exact path='/' render={(props) => (
+                    <RequestList
+                      onUpdateRequest={this.props.updateTodo}
+                      onDeleteRequest={this.props.deleteTodo}
+                    />
+                  )}/>
+                }
 
-                <Route exact path='/' render={(props) => (
-                  <SignUpForm onSubmit={this.props.userSignUp}/>
-                )}/>
+                {
+                  <Route exact path='/' render={(props) => (
+                    <SignUpForm onSubmit={this.props.userSignUp}/>
+                  )}/>
+                }
 
                 <Route exact path='/sign-in' render={(props) => (
                   <SignInForm onSubmit={this.props.userSignIn}/>

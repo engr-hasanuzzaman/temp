@@ -2,14 +2,14 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import * as actionCreators from '../actions/ui'
 
-class TodoForm extends Component {
+class RequestForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
   }
 
   render() {
     const form = this.props.form
-    const { changeOrder, changeTitle, onAddTodo } = this.props
+    const { changeOrder, changeTitle, onAddRequest } = this.props
 
     return (
       <div className="row">
@@ -19,7 +19,7 @@ class TodoForm extends Component {
               className="form-control"
               type="number"
               value={form.order}
-              onChange={(e) => changeOrder(e.target.value)} 
+              onChange={(e) => changeOrder(e.target.value)}
             />
           </div>
           <div className="form-group col-md-8">
@@ -27,7 +27,7 @@ class TodoForm extends Component {
               className="form-control"
               type="text"
               value={form.title}
-              onChange={(e) => changeTitle(e.target.value)} 
+              onChange={(e) => changeTitle(e.target.value)}
             />
           </div>
           <div className="form-group col-md-2">
@@ -35,7 +35,7 @@ class TodoForm extends Component {
               className="btn btn-primary"
               type="submit"
               disabled={form.disabled}
-              onClick={() => onAddTodo(form)}>
+              onClick={() => onAddRequest(form)}>
               Add
             </button>
           </div>
@@ -45,17 +45,17 @@ class TodoForm extends Component {
   }
 }
 
-TodoForm.propTypes = {
-  onAddTodo: PropTypes.func.isRequired
+RequestForm.propTypes = {
+  onAddRequest: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
   return { form: state.form }
 }
 
-TodoForm = connect(
+RequestForm = connect(
   mapStateToProps,
   actionCreators
-)(TodoForm)
+)(RequestForm)
 
-export default TodoForm
+export default RequestForm;
