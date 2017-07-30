@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    render json: current_user.as_json(only: %i[email role])
+    render json: current_user.as_json(only: %i[email role name])
   end
 
   private

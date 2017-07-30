@@ -8,7 +8,7 @@ export const fetchTodos = createAction(types.FETCH_TODOS, api.fetchTodos)
 export const addTodo = createAction(types.ADD_TODO, api.addTodo)
 export const deleteTodo = createAction(types.DELETE_TODO, api.deleteTodo)
 export const updateTodo = createAction(types.UPDATE_TODO, api.updateTodo)
-export const oUserSignIn = createAction(types.USER_SIGNIN, userApi.signIn)
+export const userSignIn = createAction(types.USER_SIGNIN, userApi.signIn)
 export const oUserSignUp = createAction(types.USER_SIGNUP)
 
 export const addNotice = createAction('ADD_NOTICE')
@@ -25,8 +25,6 @@ export const userSignUp = function(user){
       dispatch(addError(['User sign up succesful']));
     })
     .catch((error) =>{
-      console.log('--------user sing up fail chunk');
-      console.log(error.response.data);
       dispatch(addError(error.response.data));
     })
   }

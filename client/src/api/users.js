@@ -19,13 +19,14 @@ const apiAxios = axios.create({
 const fetUserProfile = (jwt) => {
   return apiAxios.get(profileUrl, { headers: formatToken(jwt)})
     .then(res => {
+      console.log('---user fetch data success')
       let user = res.data;
       user['jwt'] = jwt;
       return user;
     })
     .catch(error => {
+      console.log('---user fetch data success')
       console.log(error.message);
-
       return {
         jwt: '',
         type: '',
@@ -51,14 +52,12 @@ export default {
     console.log(user);
     return apiAxios.post(signInUrl, { auth: user })
       .then(res => {
-        console.log('User sign in success');
+        console.log('User sign in success now fetch data');
         console.log(res);
         return fetUserProfile(res.data.jwt)
       })
       .catch(error => {
-        console.log('User sign in fail and error is');
-        console.log(error.message);
-        return error;
+        throw new Error(['User email/password invalid']);
       })
   },
 

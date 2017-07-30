@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import SweetAlert from 'sweetalert-react';
-
+import ReduxSweetAlert, { swal, close } from 'react-redux-sweetalert';
 import {BrowserRouter, Route, Path, Switch} from 'react-router-dom';
 import Nav from './components/Nav'
 
@@ -51,53 +51,53 @@ export default class App extends Component {
 
   render() {
     return (
-      // <div className="App">
+      <div className="container">
+        {
+          this.props.errors.length > 0 && this.props.swal({
+            title: 'Application Notification',
+            text: this.props.errors.join('/n'),
+            onConfirm: () =>{this.props.close; this.props.resetError();},
+          })
+        }
         <BrowserRouter>
-        <div className='container'>
-            <Nav />
-            <Switch>
-              <Route exact path='/' component={SignUpForm} />
-              <Route path='/sign-in' component={SignInForm} />
-              <Route path='/sign-up' component={SignUpForm} />
-              <Route render={function() {
-                return <p> Your page not found! </p>
-              }} />
-            </Switch>
-         </div>
-      </BrowserRouter>
+          <div className=''>
+              <Nav />
+              <Switch>
 
-      // <div className="App">
-      //   <h1>Todos</h1>
-      //   <TodoForm
-      //     onAddTodo={this.handleAddTodo.bind(this)}
-      //   />
-      //   <TodoList
-      //     onUpdateTodo={this.handleUpdateTodo.bind(this)}
-      //     onDeleteTodo={this.handleDeleteTodo.bind(this)}
-      //   />
+                <Route exact path='/' render={(props) => (
+                  <SignUpForm onSubmit={this.props.userSignUp}/>
+                )}/>
 
-        // <SignUpForm onSubmit={(user) =>{
-        //   console.log('--------- submit signup form now');
-        //   this.handleUserSignUp(user);
-        // }} error='this is error message'/>
+                <Route exact path='/sign-in' render={(props) => (
+                  <SignInForm onSubmit={this.props.userSignIn}/>
+                )}/>
 
-        // <SignInForm onSubmit={this.handleUserSignIn} error='this is error message'/>
 
-      //   <SweetAlert
-      //   show={this.props.errors.length > 0}
-      //   title="Application Notice board"
-      //   text={this.props.errors[0]}
-      //   onConfirm={() => this.props.resetError()}
-      //   onOutsideClick={() => this.setState({ show: false })}
-      // />
-      // </div>
+                <Route path='/sign-up' render={(props) => (
+                  <SignUpForm onSubmit={this.props.userSignUp}/>
+                )}/>
+
+                <Route render={function() {
+                  return <p> Your page not found! </p>
+                }} />
+              </Switch>
+           </div>
+         </BrowserRouter>
+         <ReduxSweetAlert />
+      </div>
     )
   }
 }
+
+App.propTypes = {
+  errors: PropTypes.arrayOf(React.PropTypes.string).isRequired
+}
+
+
 const mapStateToProps = (state) => {
   return { errors: state.errors }
 }
 
-App = connect(mapStateToProps, actionCreators)(App)
+App = connect(mapStateToProps, {...actionCreators,swal, close})(App)
 
 export default App
