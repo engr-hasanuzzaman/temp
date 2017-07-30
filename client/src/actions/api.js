@@ -10,6 +10,7 @@ export const deleteTodo = createAction(types.DELETE_TODO, api.deleteTodo)
 export const updateTodo = createAction(types.UPDATE_TODO, api.updateTodo)
 export const userSignIn = createAction(types.USER_SIGNIN, userApi.signIn)
 export const oUserSignUp = createAction(types.USER_SIGNUP)
+export const userSignOut = createAction('USER_SING_OUT')
 
 export const addNotice = createAction('ADD_NOTICE')
 export const addError = createAction('ADD_ERROR')

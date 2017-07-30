@@ -18,8 +18,8 @@ export default class App extends Component {
     this.state ={
       show: true
     }
-    this.handleUserSignUp = this.handleUserSignUp.bind(this);
-    this.handleUserSignIn = this.handleUserSignIn.bind(this);
+    // this.handleUserSignUp = this.handleUserSignUp.bind(this);
+    // this.handleUserSignIn = this.handleUserSignIn.bind(this);
     this.isAuthorize = this.isAuthorize.bind(this);
   }
   componentDidMount() {
@@ -73,7 +73,7 @@ export default class App extends Component {
             <Redirect to={from || '/'}/>
           }
               <div className='header'>
-                <Nav authenticate={this.isAuthorize()} signOurLint={this.props.userSignIn} />
+                <Nav authenticate={this.isAuthorize()}  singOutPath={this.props.userSignOut}/>
               </div>
               <Switch>
 

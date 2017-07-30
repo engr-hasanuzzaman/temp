@@ -22,6 +22,15 @@ function Navigation(props) {
         <Navbar.Toggle />
       </Navbar.Header>
       }
+
+      {! props.authenticate &&
+      <Navbar.Header>
+        <Navbar.Brand>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      }
+
       <Navbar.Collapse>
         <Nav>
           <NavItem eventKey={1} href="#">Link</NavItem>
@@ -44,21 +53,15 @@ function Navigation(props) {
               </NavLink>
             </NavItem>
           }
-
           {
             props.authenticate &&
-            <NavItem>
-              <NavLink activeClassName='active' onClick={() =>{
-                props.userSignIn({jwt: '', name: '', email: ''})
-              }}>
-                Sign out
-              </NavLink>
+            <NavItem onClick={()=>{
+              props.singOutPath({jwt: ''});
+            }}
+              href="#">Link
             </NavItem>
           }
         </Nav>
-
-
-
       </Navbar.Collapse>
   </Navbar>
 
