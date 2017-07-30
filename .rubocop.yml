@@ -6,7 +6,12 @@ AllCops:
     - "vendor/ruby/**/*"
     - "tmp/**/*"
     - "db/**/*"
-    - 'config/deploy.rb'
+    - 'config/**/*'
+    - 'spec/**/*'
+    - 'Rakefile'
+    - 'config.ru'
+    - 'Gemfile'
+
 
 # Certain folders do not class-level comments
 Documentation:
@@ -27,10 +32,6 @@ Metrics/BlockLength:
 Metrics/ClassLength:
   Max: 150
   Exclude:
-    - "db/migrate/*"
-    - "app/controllers/api/v1/*"
-    - "app/concepts/api/v1/league/operations/*"
-    - "app/concepts/api/v1/league/representers/*"
 
 
 Metrics/LineLength:

@@ -1,3 +1,5 @@
+# frozen_string_literal: true.
+
 require_relative 'boot'
 
 require 'rails'
@@ -16,6 +18,7 @@ require 'rails/test_unit/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# root module
 module Rails5ReactReduxTodo
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -34,7 +37,7 @@ module Rails5ReactReduxTodo
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :patch, :delete]
+        resource '*', headers: :any, methods: %i[get post patch delete]
       end
     end
 
