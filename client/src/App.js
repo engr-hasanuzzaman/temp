@@ -4,7 +4,7 @@ import SweetAlert from 'sweetalert-react';
 import ReduxSweetAlert, { swal, close } from 'react-redux-sweetalert';
 import {BrowserRouter, Route, Path, Switch} from 'react-router-dom';
 import Nav from './components/Nav'
-
+import { Redirect } from 'react-router'
 
 import TodoForm from './containers/TodoForm'
 import TodoList from './containers/TodoList'
@@ -20,6 +20,7 @@ export default class App extends Component {
     }
     this.handleUserSignUp = this.handleUserSignUp.bind(this);
     this.handleUserSignIn = this.handleUserSignIn.bind(this);
+    this.isAuthorize = this.isAuthorize.bind(this);
   }
   componentDidMount() {
     this.handleFetchTodos()
@@ -40,16 +41,21 @@ export default class App extends Component {
   handleDeleteTodo(id) {
     this.props.deleteTodo(id)
   }
+  //
+  // handleUserSignUp(user) {
+  //   this.props.userSignUp(user);
+  // }
+  //
+  // handleUserSignIn(user) {
+  //   this.props.userSignIn(user);
+  // }
 
-  handleUserSignUp(user) {
-    this.props.userSignUp(user);
-  }
-
-  handleUserSignIn(user) {
-    this.props.userSignIn(user);
+  isAuthorize(){
+    return this.props.user.jwt.length > 0
   }
 
   render() {
+    const { from } = this.props.location && this.props.location.state || '/'
     return (
       <div className="container">
         {
@@ -59,9 +65,16 @@ export default class App extends Component {
             onConfirm: () =>{this.props.close; this.props.resetError();},
           })
         }
+
         <BrowserRouter>
-          <div className=''>
-              <Nav />
+          <div>
+          {
+            this.isAuthorize() &&
+            <Redirect to={from || '/'}/>
+          }
+              <div className='header'>
+                <Nav authenticate={this.isAuthorize()} signOurLint={this.props.userSignIn} />
+              </div>
               <Switch>
 
                 <Route exact path='/' render={(props) => (
@@ -95,7 +108,7 @@ App.propTypes = {
 
 
 const mapStateToProps = (state) => {
-  return { errors: state.errors }
+  return { errors: state.errors, user: state.user }
 }
 
 App = connect(mapStateToProps, {...actionCreators,swal, close})(App)

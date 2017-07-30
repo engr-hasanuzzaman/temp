@@ -1,26 +1,68 @@
 var React = require('react');
 var NavLink = require('react-router-dom').NavLink;
+var ReactBootstrap =  require('react-bootstrap')
 
-function Nav(props) {
+var Navbar = ReactBootstrap.Navbar,
+Nav = ReactBootstrap.Nav,
+NavItem = ReactBootstrap.NavItem,
+DropdownButton = ReactBootstrap.DropdownButton,
+NavDropdown = ReactBootstrap.NavDropdown,
+MenuItem = ReactBootstrap.MenuItem;
+
+function Navigation(props) {
   return(
-    <ul className='nav'>
-      <li>
+    <Navbar inverse collapseOnSelect>
+      { props.authenticate &&
+      <Navbar.Header>
+        <Navbar.Brand>
           <NavLink exact activeClassName='active' to='/'>
             Home
           </NavLink>
-      </li>
-      <li>
-          <NavLink activeClassName='active' to='/sign-up'>
-            Sign Up
-          </NavLink>
-      </li>
-      <li>
-          <NavLink activeClassName='active' to='/sign-in'>
-            Sign In
-          </NavLink>
-      </li>
-    </ul>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      }
+      <Navbar.Collapse>
+        <Nav>
+          <NavItem eventKey={1} href="#">Link</NavItem>
+          <NavItem eventKey={2} href="#">Link</NavItem>
+        </Nav>
+        <Nav pullRight className='auth-container'>
+          {!props.authenticate &&
+            <NavItem>
+              <NavLink activeClassName='active' to='/sign-up'>
+                Sign Up
+              </NavLink>
+            </NavItem>
+
+
+          }
+          {!props.authenticate &&
+            <NavItem>
+              <NavLink activeClassName='active' to='/sign-in'>
+                Sign In
+              </NavLink>
+            </NavItem>
+          }
+
+          {
+            props.authenticate &&
+            <NavItem>
+              <NavLink activeClassName='active' onClick={() =>{
+                props.userSignIn({jwt: '', name: '', email: ''})
+              }}>
+                Sign out
+              </NavLink>
+            </NavItem>
+          }
+        </Nav>
+
+
+
+      </Navbar.Collapse>
+  </Navbar>
+
   );
 }
 
-module.exports = Nav;
+module.exports = Navigation;

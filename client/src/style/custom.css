@@ -1,0 +1,11 @@
+a{
+  color: #9d9d9d;
+}
+.auth-container{
+  margin-right: 20px;
+}
+
+a.active.navbar-brand,a.active.navbar-brand:hover, a.active{
+  color: #0275d8;
+}
+/*.navbar-inverse .navbar-brand*/

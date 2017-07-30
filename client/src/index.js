@@ -4,6 +4,7 @@ import App from './App'
 import store from './store'
 import { Provider } from 'react-redux'
 import { ReduxSweetAlert } from 'react-redux-sweetalert'
+require('./style/custom.css');
 
 ReactDOM.render(
   <Provider store={store}>
