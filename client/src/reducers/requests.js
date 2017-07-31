@@ -6,7 +6,8 @@ const initialState = {
   description: '',
   id: 0,
   user: { },
-  agent: { }
+  agent: { },
+  status: 'pending'
 }
 
 const request = handleActions({
@@ -29,7 +30,7 @@ const requests = handleActions({
 
   [ApiAction.ADD_REQUEST]: {
     next: (state, action) => [...state, request(state, action)],
-    throw: (state, action) => state
+    throw: (state, action) => s
   },
 
   [ApiAction.UPDATE_REQUEST]: {

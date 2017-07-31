@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # constant & enum
   #
 
-  enum role: %i[general agent admin]
+  enum role: %i[customer agent admin]
 
   #
   # includes

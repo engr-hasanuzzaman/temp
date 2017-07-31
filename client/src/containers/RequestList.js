@@ -5,6 +5,7 @@ import * as actionCreators from '../actions/api'
 import Request from '../components/Request'
 
 class RequestList extends Component {
+
   render() {
     const { requests } = this.props
 
@@ -14,7 +15,7 @@ class RequestList extends Component {
           key={request.id}
           request={request}
           onUpdate={this.props.updateRequest}
-          onDelete={this.props.deleteRequest}
+          onDelete={this.props.onDeleteRequest}
         />
       )
     })
@@ -24,10 +25,10 @@ class RequestList extends Component {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th width="10%">Done</th>
-              <th width="20%">Priority</th>
-              <th>things to do</th>
-              <th width="20%"></th>
+              <th width="20%">Title</th>
+              <th>Description</th>
+              <th width="20%">Status</th>
+              <th width="10%">Action</th>
             </tr>
           </thead>
           <tbody>

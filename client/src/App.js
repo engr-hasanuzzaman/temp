@@ -7,8 +7,11 @@ import Nav from './components/Nav'
 import { Redirect } from 'react-router'
 
 import RequestList from './containers/DashBoard'
+import RequestForm from './containers/RequestForm'
+
 import SignUpForm from './components/SignUp'
 import SignInForm from './components/SignIn'
+
 import * as actionCreators from './actions/api'
 
 export default class App extends Component {
@@ -23,6 +26,14 @@ export default class App extends Component {
 
   isAuthorize(){
     return this.props.user.jwt.length > 0
+  }
+
+  handleAddRequest(request){
+    const param = {
+      req: request,
+      jwt: this.props.user.jwt
+    }
+    this.props.addRequest(param);
   }
 
   render() {
@@ -59,6 +70,14 @@ export default class App extends Component {
                 {
                   <Route exact path='/' render={(props) => (
                     <SignUpForm onSubmit={this.props.userSignUp}/>
+                  )}/>
+                }
+
+                {this.isAuthorize() &&
+                  <Route path='/new-request' render={(props) => (
+                    <RequestForm
+                      onAddRequest={this.handleAddRequest.bind(this)}
+                    />
                   )}/>
                 }
 

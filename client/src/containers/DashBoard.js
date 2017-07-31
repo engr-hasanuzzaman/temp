@@ -8,23 +8,25 @@ import RequestList from './RequestList'
 class DashBoard extends Component {
   // fetch request
   componentDidMount() {
-    this.props.fetchRequests();
+    this.props.fetchRequests(this.props.jwt);
   }
 
-  handleAddRequest(request){
-    this.props.addRequest(request);
+  handleDeleteRequest(id){
+    const param = {
+      id: id,
+      jwt: this.props.jwt
+    }
+
+    this.props.deleteRequest(param);
   }
 
   render() {
     return (
       <div className="App">
         <h1>Your request list</h1>
-        <RequestForm
-          onAddRequest={this.handleAddRequest.bind(this)}
-        />
         <RequestList
           onUpdateRequest={this.props.updateRequest}
-          onDeleteRequest={this.props.deleteRequest}
+          onDeleteRequest={this.handleDeleteRequest.bind(this)}
         />
       </div>
     )
@@ -33,11 +35,16 @@ class DashBoard extends Component {
 
 DashBoard.propTypes = {
   updateRequest: PropTypes.func.isRequired,
-  deleteRequest: PropTypes.func.isRequired
+  deleteRequest: PropTypes.func.isRequired,
+  jwt: PropTypes.string.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return { jwt: state.user.jwt }
 }
 
 DashBoard = connect(
-  null,
+  mapStateToProps,
   actionCreators
 )(DashBoard)
 

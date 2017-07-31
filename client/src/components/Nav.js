@@ -33,9 +33,15 @@ function Navigation(props) {
 
       <Navbar.Collapse>
         <Nav>
-          <NavItem eventKey={1} href="#">Link</NavItem>
-          <NavItem eventKey={2} href="#">Link</NavItem>
+          {props.authenticate &&
+            <NavItem>
+              <NavLink activeClassName='active' to='/new-request'>
+                Create new request
+              </NavLink>
+            </NavItem>
+          }
         </Nav>
+
         <Nav pullRight className='auth-container'>
           {!props.authenticate &&
             <NavItem>
@@ -59,7 +65,7 @@ function Navigation(props) {
               e.preventDefault();
               props.singOutPath({jwt: ''});
             }}
-              href="#">Sign ut
+              href="#">Sign out
             </NavItem>
           }
         </Nav>

@@ -16,7 +16,7 @@ const apiAxios = axios.create({
   headers: {'X-Requested-With': 'XMLHttpRequest'}
 });
 
-const fetUserProfile = (jwt) => {
+const fetchUserProfile = (jwt) => {
   return apiAxios.get(profileUrl, { headers: formatToken(jwt)})
     .then(res => {
       console.log('---user fetch data success')
@@ -54,29 +54,11 @@ export default {
       .then(res => {
         console.log('User sign in success now fetch data');
         console.log(res);
-        return fetUserProfile(res.data.jwt)
+        return fetchUserProfile(res.data.jwt)
       })
       .catch(error => {
         throw new Error(['User email/password invalid']);
       })
   },
-
-  fetUserProfile: (jwt) => {
-    console.log('------- signIn api called with parameter:');
-    console.log(jwt);
-    return apiAxios.get(profileUrl, { headers: formatToken(jwt)})
-      .then(res => {
-        console.log('User sign in success');
-        console.log(res);
-        return res.data;
-      })
-      .catch(error => {
-        console.log('User sign in fail and error is');
-        console.log(error.message);
-        return {
-          jwt: '',
-          type: ''
-        }
-      })
-  }
+  
 }

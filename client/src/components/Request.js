@@ -12,15 +12,9 @@ export default class Request extends Component {
 
     return (
       <tr className={request.completed ? "table-success": ""}>
-        <td>
-          <input
-            type="checkbox"
-            onChange={(e) => this.handleToggle(request, e.target.checked)}
-            checked={request.completed ? "checked": ""}
-          />
-        </td>
-        <td>{request.order}</td>
         <td>{request.title}</td>
+        <td>{request.description}</td>
+        <td>{request.status}</td>
         <td>
           <button
             className="btn btn-danger"
