@@ -23,14 +23,6 @@ ActiveRecord::Schema.define(version: 20170730202509) do
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
-  create_table "todos", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "title"
-    t.boolean "completed"
-    t.integer "order"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "role", default: 0
     t.string "email", null: false

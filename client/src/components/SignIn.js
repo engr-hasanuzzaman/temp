@@ -53,12 +53,6 @@ class SignInForm extends React.Component {
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Checkbox>Remember me</Checkbox>
-            </Col>
-          </FormGroup>
-
-          <FormGroup>
-            <Col smOffset={2} sm={10}>
               <Button bsStyle="success" type="submit">
                 Sign In
               </Button>
